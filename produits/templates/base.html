@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Arc En Ciel{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="icon" href="{% static 'assets/images/logo-icon.png' %}" type="image/png">
+    <!-- Lien vers Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="container">
+        <div class="logo-container">
+            <img src="{% static 'assets/images/logo-gif.gif' %}" alt="logo-boutique">
+        </div>
+        <nav class="navbar">
+            <div class="navbar-links">
+                <a href="{% url 'home' %}">Accueil</a>
+                <div class="dropdown">
+                    <a href="#" class="dropdown-toggle categorie-link">Catégories</a>
+                    <div class="dropdown-menu">
+                        <a href="{% url 'liste_bagues' %}">Bagues</a>
+                        <a href="{% url 'liste_bijouxcheville' %}">Bijoux Cheville</a>
+                        <a href="{% url 'liste_bracelets' %}">Bracelets</a>
+                        <a href="{% url 'liste_colliers' %}">Colliers</a>
+                        <a href="{% url 'liste_chapelets' %}">Chapelets</a>
+                        <a href="{% url 'liste_pendules' %}">Pendules Divinatoires</a>
+                        <a href="{% url 'liste_portecles' %}">Porte-Clés</a>
+                    </div>
+                </div>
+                <a href="#">Nouveautés</a>
+                <a href="{% url 'apropos' %}">À Propos</a>
+                <a href="{% url 'contact' %}">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    {% block content %}
+    {% endblock %}
+
+    <!-- Place the script just before the closing body tag -->
+    {% block extra_js %}
+    <script src="{% static 'js/main.js' %}"></script>
+    {% endblock %}
+</body>

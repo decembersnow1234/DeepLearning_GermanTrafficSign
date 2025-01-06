@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Arc En Ciel - Bagues{% endblock %}
+
+{% block content %}
+<!-- Bannière animée -->
+<div class="banner">
+    <img src="{% static 'assets/images/banner-bagues.jpg' %}" alt="bannière photo bagues">
+    <div class="banner-text">
+        <p>Découvrez notre collection de bagues artisanales, où chaque anneau est façonné avec soin</p>
+        <p>pour symboliser une harmonie subtile entre élégance et spiritualité.</p>
+    </div>
+</div>
+
+<!-- Affichage des bagues en grille -->
+<section class="produits">
+    <img src="{% static 'assets/images/titre-bagues.png' %}" alt="logo titre bagues">
+    <div class="produits-list">
+        {% for item in produits %}
+        <div class="produit-item">
+            <!-- Récupération de la première image associée au produit -->
+            {% if item.images.exists %}
+                <img src="{{ item.images.first.image.url }}" alt="{{ item.nom }}">
+            {% else %}
+                <img src="{% static 'assets/images/default-bague.jpg' %}" alt="{{ item.nom }}">
+            {% endif %}
+            <h2>{{ item.nom }}<br></h2>
+            <div class="produit-footer">
+                <p class="prix">{{ item.prix }} €</p>
+                <a class="btn" href="{% url 'produit_detail' item.id %}">Voir</a>
+            </div>
+        </div>
+        {% empty %}
+        <p>Aucune bague disponible pour le moment.</p>
+        {% endfor %}
+    </div>
+</section>
+
+{% endblock %}

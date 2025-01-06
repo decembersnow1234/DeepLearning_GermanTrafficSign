@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Arc En Ciel - Bijoux Cheville{% endblock %}
+
+{% block content %}
+<!-- Bannière animée -->
+<div class="banner">
+    <img src="{% static 'assets/images/Capture.png' %}" alt="bannière photo bijoux cheville">
+    <div class="banner-text">
+        <p>Explorez notre collection de bijoux de cheville, conçus pour allier délicatesse et élégance</p>
+        <p>en apportant une touche d’harmonie à chaque pas.</p>
+    </div>
+</div>
+
+<!-- Affichage des bijoux de cheville -->
+<section class="produits">
+    <img src="{% static 'assets/images/titres-bijchev.png' %}" alt="logo titre bagues">
+    
+    <div class="produits-list">
+        {% for item in produit %}
+        <div class="produit-item">
+            <h2>{{ item.nom }}</h2>
+            <p>{{ item.description }}</p>
+            <p>Prix : {{ item.prix }} €</p>
+            <img src="{{ item.image.url }}" alt="{{ item.nom }}">
+        </div>
+        {% empty %}
+        <p>Aucun bijou de cheville disponible pour le moment.</p>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Arc En Ciel - Pendules Divinatoires{% endblock %}
+
+{% block content %}
+<!-- Bannière animée -->
+<div class="banner">
+    <img src="{% static 'assets/images/Capture.png' %}" alt="bannière photo pendules">
+    <div class="banner-text">
+        <p>Élevez votre pratique spirituelle avec nos pendules divinatoires,</p>
+        <p>des outils exquis en pierre naturelle pour une guidance précise et éclairante.</p>
+    </div>
+</div>
+
+<!-- Affichage des pendules divinatoires -->
+<section class="produits">
+    <img src="{% static 'assets/images/titres-pendules.png' %}" alt="logo titre bagues">
+    <div class="produits-list">
+        {% for item in produit %}
+        <div class="produit-item">
+            <h2>{{ item.nom }}</h2>
+            <p>{{ item.description }}</p>
+            <p>Prix : {{ item.prix }} €</p>
+            <img src="{{ item.image.url }}" alt="{{ item.nom }}">
+        </div>
+        {% empty %}
+        <p>Aucun pendule disponible pour le moment.</p>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

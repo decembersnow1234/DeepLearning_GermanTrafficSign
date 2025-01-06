@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>Retirer le produit du panier</h1>
+    <p>Êtes-vous sûr(e) de vouloir retirer cet article de votre panier ?</p>
+    
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit">Retirer du panier</button>
+        <a href="{% url 'panier' %}">Annuler</a>
+    </form>
+</div>
+{% endblock %}

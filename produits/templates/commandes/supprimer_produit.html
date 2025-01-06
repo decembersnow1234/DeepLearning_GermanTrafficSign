@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>Supprimer le produit</h1>
+    <p>Êtes-vous sûr(e) de vouloir supprimer ce produit ?</p>
+    
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit">Supprimer</button>
+        <a href="{% url 'ajouter_produit' %}">Annuler</a>
+    </form>
+</div>
+{% endblock %}

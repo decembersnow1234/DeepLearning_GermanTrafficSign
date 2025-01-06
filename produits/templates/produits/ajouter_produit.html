@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="form-container">
+    <h1>Ajouter un produit</h1>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-left">
+            <!-- Partie gauche : formulaire pour le produit -->
+            <div class="form-group">
+                <label for="nom">Nom:</label>
+                {{ produit_form.nom }}
+            </div>
+            <div class="form-group">
+                <label for="description">Description:</label>
+                {{ produit_form.description }}
+            </div>
+            <div class="form-group">
+                <label for="prix">Prix:</label>
+                {{ produit_form.prix }}
+            </div>
+            <div class="form-group">
+                <label for="categorie">Catégorie:</label>
+                {{ produit_form.categorie }}
+            </div>
+        </div>
+
+        <div class="form-right">
+            <!-- Partie droite : ajouter des images -->
+            <h2>Ajouter des images</h2>
+            {{ formset.management_form }}
+            {% for form in formset %}
+                <div class="form-group">
+                    {{ form.image }}
+                </div>
+            {% endfor %}
+            <button type="submit" class="btn-add-product">Ajouter le produit</button>
+        </div>
+    </form>
+    <hr>
+</div>
+
+<!-- Liste des produits -->
+<h2>Liste des produits</h2>
+<div class="product-table-container">
+    <table class="product-table">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prix</th>
+                <th>Catégorie</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for produit in produits %}
+            <tr>
+                <td>{{ produit.nom }}</td>
+                <td>{{ produit.prix }} €</td>
+                <td>{{ produit.categorie }}</td>
+                <td>
+                    <a href="{% url 'modifier_produit' produit.id %}" class="btn-edit">Modifier</a>
+                    <a href="{% url 'supprimer_produit' produit.id %}" class="btn-delete" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce produit ?')">Supprimer</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4">Aucun produit disponible pour le moment.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

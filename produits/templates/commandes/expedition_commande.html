@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1>Votre commande a été expédiée</h1>
+    <p>Nous sommes heureux de vous informer que votre commande a été expédiée.</p>
+    <p>Vous recevrez bientôt vos articles. Vous pouvez suivre votre colis avec le numéro de suivi suivant :</p>
+    <p>Numéro de suivi : {{ tracking_number }}</p>
+</div>
+{% endblock %}

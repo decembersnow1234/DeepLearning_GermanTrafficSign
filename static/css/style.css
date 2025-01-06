@@ -1,0 +1,804 @@
+/* Global */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Raleway', Arial, sans-serif;
+    background-color: #f0d9d5ec;
+    margin: 0;
+}
+
+/*--   LOGO + NAV BAR   -->*/
+
+.logo-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.logo-container img {
+    max-height: 100%;
+}
+
+.navbar {
+    padding: 14px;
+    background-color: #fff5ed;;
+    text-align: center;
+    z-index: 2;
+    border-bottom: 1px solid #ddd;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar a {
+    text-decoration: none;
+    margin-right: 120px;
+    color: rgba(161, 66, 121, 0.829);
+    font-size: clamp(1.5em, 1.5vw, 1.6em);
+    padding: 5px 10px;
+    display: inline-block;
+}
+
+.navbar a:hover {
+    color: #e82980;
+}
+
+/* MENU DÉROULANT - CATÉGORIES */
+
+
+.navbar .categorie-link:hover::before,
+.navbar .categorie-link:hover::after {
+    opacity: 1;
+    transform: translateY(-50%);
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-toggle {
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: #fff5ed; /* Fond blanc avec légère transparence */
+    box-shadow: 0 5px 6px rgba(0, 0, 0, 0.2); /* Légère ombre pour la séparation */
+    z-index: 5; /* Assure que le menu est devant tout le reste */
+    top: 100%;
+    left: 30%; /* Positionner à 50% de la largeur de l'élément parent */
+    transform: translateX(-50%);
+    width: 240px; /* Élargir la largeur du menu */
+    border-radius: 8px; /* Ajouter un arrondi pour un look plus moderne */
+    padding: 20px 0;
+}
+
+.dropdown-menu a {
+    color: #333; /* Couleur plus foncée pour meilleure lisibilité */
+    padding: 12px 0; /* Ajouter un padding vertical */
+    text-decoration: none;
+    display: block;
+    text-align: center; /* Centrer le texte dans chaque case */
+    font-size: 1.2em; /* Augmenter légèrement la taille du texte */
+    width: 100%; /* Prendre toute la largeur du menu */
+    box-sizing: border-box; /* Inclure le padding dans la largeur totale */
+    border-bottom: 1px solid #ccc; /* Ajouter une ligne de séparation entre les éléments */
+}
+
+.dropdown-menu a:last-child {
+    border-bottom: none;
+}
+
+.dropdown-menu a:hover {
+    background-color: #f0d9d5ec; /* Changement de couleur au survol */
+    color: #e82980; /* Changement de couleur du texte au survol */
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+
+
+
+/*--   BANNIERE  -->*/
+
+.banner {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 600px;
+    margin-bottom: 100px;
+}
+
+.banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.8;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.banner-text {
+    position: relative;
+    width: 1750px;
+    z-index: 2;
+    text-align: center;
+    color: #0f060ab9;
+    font-size: clamp(1.5em, 2vw, 2em);
+    background-color: #fcebddbc;
+    border-radius: 8px;
+}
+/* CATEGORIES */
+
+.categories {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+
+.category-item img {
+    position: relative; /* Nécessaire pour que la bannière se positionne correctement */
+    width: 300px;
+    height: auto;
+}
+
+.category-item:hover img {
+    transform: scale(1.2); /* Zoom léger sur l'image au survol */
+}
+
+
+
+
+/* --------------------- PAGE DES PRODUITS ---------------------- */
+
+.produits-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    margin-top: 70px;
+}
+.produits img {
+    display: flex;
+    margin: 0 auto;
+}
+.produit-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    background-color: #fff5ed;;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.produit-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.produit-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    transition: transform 0.2s ease;
+}
+
+.produit-item:hover img {
+    transform: scale(1.05);
+}
+
+.produit-item h2 {
+    min-height: 50px;
+    margin-bottom: auto;
+    font-size: 16px;
+    color: #333;
+}
+
+.produit-item .produit-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.produit-item .prix {
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+}
+
+.produit-item .btn {
+    background-color: #9f73b0;
+    color: white;
+    font-weight: bold;
+    padding: 10px 15px;
+    text-decoration: none;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.produit-item .btn:hover {
+    background-color: #c2185b;
+    transform: translateY(-3px);
+}
+
+/* --------------------- PAGE DÉTAIL PRODUIT ---------------------- */
+
+/* bouton retour */
+
+.retour-page-bagues {
+    margin: 90px 0; /* Espace au-dessus et en dessous du bouton */
+    text-align: left; /* Alignement du bouton à gauche */
+    padding-left: 19%; /* Optionnel : Ajoute un peu d'espace sur la gauche */
+}
+
+.btn-retour {
+    background-color: #9f73b0; /* Couleur de fond */
+    color: white; /* Couleur du texte */
+    padding: 10px 20px; /* Taille du bouton */
+    border-radius: 5px; /* Arrondir les coins */
+    text-decoration: none; /* Enlever la sous-ligne du lien */
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+.btn-retour:hover {
+    background-color: #c2185b;
+}
+
+/*  Container */
+
+.produit-detail-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #fff5ed;;
+    border-radius: 15px;
+    margin: auto;
+    width: 90%;
+    max-width: 1200px;
+    margin-top: 60px;
+}
+
+.produit-info-container {
+    flex: 1;
+    max-width: 40%;
+    padding-left: 20px;
+}
+
+.produit-info-container h1 {
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.produit-info-container .produit-prix {
+    font-size: 1.2em;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.produit-info-container p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+.quantity-selector {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.quantity-selector label {
+    margin-right: 10px;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.quantity-selector input[type="number"] {
+    width: 60px;
+    padding: 5px;
+    font-size: 1.1em;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* Image principale */
+.image-principale-container img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Conteneur des miniatures */
+.miniatures-container {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+/* Miniatures */
+.miniatures-container .miniature {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.miniatures-container .miniature:hover {
+    transform: scale(1.1);
+}
+
+.produit-item img, /* Cela s'applique aux images dans la grille de produits */
+.miniatures-container img, /* Cela s'applique aux miniatures */
+.image-principale-container img { /* Cela s'applique à l'image principale */
+    width: 100%; /* L'image prendra 100% de la largeur de son conteneur */
+    height: 250px; /* Fixe la hauteur à 300px (tu peux ajuster selon tes besoins) */
+    object-fit: cover; /* Maintient les proportions tout en remplissant le conteneur */
+    border-radius: 8px; /* Pour arrondir les coins, optionnel */
+}
+/* Boutons */
+.btn-primary {
+    background-color: #9f73b0;
+    color: white;
+    font-weight: bold;
+    padding: 12px 20px;
+    font-size: 1.0em;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 25px;
+}
+
+.btn-primary:hover {
+    background-color: #c2185b;
+    transform: translateY(-3px);
+}
+
+
+/* FORMULAIRE AJOUT DU PRODUIT */
+
+/* Styles pour centrer le formulaire et améliorer son design */
+.form-container {
+    background-color: #fff5ed;/* Même couleur que ta nav bar */
+    padding: 40px;
+    max-width: 600px;
+    margin: 50px auto;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Légère ombre pour un effet en relief */
+}
+
+/* Centrer le titre */
+.form-container h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 1.8em;
+    color: #9f73b0; /* Couleur du texte correspondant au thème */
+}
+
+/* Style des labels et champs de formulaire */
+.form-container label {
+    display: block;
+    margin-bottom: 10px;
+    color: #333;
+    font-weight: bold;
+}
+
+.form-container input[type="text"],
+.form-container input[type="number"],
+.form-container textarea,
+.form-container input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-sizing: border-box;
+    background-color: white;
+}
+
+/* Bouton d'envoi */
+.form-container button {
+    background-color: #9f73b0;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1.1em;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+.form-container button:hover {
+    background-color: #c2185b;
+    transform: translateY(-3px);
+}
+
+/* AJOUT TABLEAU GESTION PRODUITS */
+table {
+    width: 50%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 18px;
+    text-align: left;  
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 12px;
+    background-color: #f9f9f9;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+form {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+button {
+    background-color: #9f73b0;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #7e57a1;
+}
+
+/* Conteneur global du formulaire */
+.form-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Titre du formulaire */
+.form-container h1 {
+    text-align: center;
+    color: #333;
+}
+
+/* Flexbox pour disposer le formulaire en deux colonnes */
+form {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+/* Partie gauche : formulaire de base */
+.form-left {
+    flex: 1;
+    margin-right: 20px;
+}
+
+/* Partie droite : ajout des images */
+.form-right {
+    flex: 1;
+    padding-left: 20px;
+    border-left: 2px solid #ddd;
+}
+
+/* Espacement pour chaque groupe de champs */
+.form-group {
+    margin-bottom: 20px;
+}
+
+/* Nouveau bouton pour ajouter un produit */
+.btn-add-product {
+    background-color: #9f73b0;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1.1em;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-add-product:hover {
+    background-color: #c2185b;
+    transform: translateY(-3px);
+}
+
+/* Table du panier */
+.panier-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.panier-table th, .panier-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.panier-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+.total-container {
+    text-align: right;
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+/* Bouton passer au paiement */
+.checkout-btn-container {
+    text-align: right;
+    margin-top: 20px;
+}
+
+.btn-checkout {
+    background-color: #9f73b0;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+}
+
+.btn-checkout:hover {
+    background-color: #c2185b;
+}
+/* PAGE DE PAIEMENT */
+
+.checkout-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.checkout-left, .checkout-right {
+    background-color: #fbe9e7;
+    padding: 20px;
+    border-radius: 10px;
+    width: 48%;
+}
+
+.checkout-left {
+    display: flex;
+    flex-direction: column;
+}
+
+.checkout-info-section {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.payment-method {
+    margin-top: 30px;
+}
+
+.payment-option img {
+    width: 150px;
+}
+
+.checkout-right h3 {
+    margin-bottom: 20px;
+}
+
+.product-summary {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.product-summary img {
+    width: 80px;
+    border-radius: 8px;
+    margin-right: 10px;
+}
+
+.product-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.checkout-total {
+    margin-top: 20px;
+}
+
+.btn-payer {
+    background-color: #9f73b0;
+    color: white;
+    padding: 15px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-size: 16px;
+}
+
+.btn-payer:hover {
+    background-color: #c2185b;
+}
+
+/* PAGE DE PAIEMENT */
+
+.paiement-page {
+    margin: 20px;
+    font-family: 'Raleway', sans-serif;
+    color: #333;
+}
+
+.paiement-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.infos-expedition {
+    background-color: #fdfdfd;
+    padding: 20px;
+    border-radius: 8px;
+    flex: 1;
+    border: 1px solid #e2e2e2;
+}
+
+.resume-commande {
+    background-color: #f8d8d8; /* Pastel rose */
+    padding: 20px;
+    border-radius: 8px;
+    flex: 1;
+    max-width: 400px;
+    color: #fff;
+}
+
+.resume-commande h3 {
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+.order-details .product-summary {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.image-produit-miniature {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-right: 15px;
+}
+
+.product-info p {
+    margin: 0;
+}
+
+.pricing-summary {
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+.pricing-summary p {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0;
+}
+
+.promo-section {
+    margin-top: 20px;
+}
+
+.promo-section input {
+    padding: 10px;
+    width: calc(100% - 100px);
+    border: 1px solid #e2e2e2;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+.promo-section button {
+    padding: 10px;
+    background-color: #e2b2b2; /* Soft pink */
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+}
+
+.payment-button {
+    margin-top: 30px;
+}
+
+.payment-button button {
+    background-color: #d49090; /* Pastel pink for the button */
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.payment-button button:hover {
+    background-color: #c47b7b;
+}
+
+.info-block {
+    margin-bottom: 20px;
+}
+
+.info-block h3 {
+    margin-bottom: 5px;
+}
+
+.info-block a {
+    color: #d49090; /* Match with button color */
+    text-decoration: none;
+}
+
+.info-block a:hover {
+    text-decoration: underline;
+}
+
+/* ------ FRAIS DE LIVRAISON ------ */
+
+.shipping-info {
+
+    color: #5c2020; /* Couleur rouge douce pour le texte */
+    text-align: center;
+    margin: 120px 0;  
+    
+}
+
+.shipping-info h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.shipping-info p {
+    font-size: 16px;
+    margin: 0;
+}

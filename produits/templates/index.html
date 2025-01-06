@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Arc En Ciel - Accueil{% endblock %}
+
+{% block content %}
+<!-- Bannière animée -->
+<div class="banner">
+    <img src="{% static 'assets/images/banner-pagegarde.png' %}" alt="Bannière Arc En Ciel">
+    <div class="banner-text">
+        <p>Découvrez des bijoux spirituels façonnés à la main, où chaque pierre naturelle porte en elle une énergie unique.</p> 
+        <p>Créations artisanales et uniques, elles sont conçues pour harmoniser corps et esprit.</p>
+    </div>
+</div>
+
+<!-- Ajout de la mention pour la livraison gratuite -->
+<div class="shipping-info">
+    <h2>🎉 Frais de livraison offerts à partir de 50€ d'achat ! 🎉</h2>
+    <p>Profitez de la livraison gratuite pour toutes les commandes de 50€ ou plus.</p>
+    <p>N'attendez plus pour faire plaisir ou vous faire plaisir !</p>
+</div>
+
+<!-- CATEGORIES -->
+<section class="categories">
+    <div class="category-item">
+        <a href="{% url 'liste_bagues' %}"><img src="{% static 'assets/images/BAGUES.png' %}" alt="Bagues"></a>
+    </div>
+    <div class="category-item">
+        <a href="{% url 'liste_bijouxcheville' %}"><img src="{% static 'assets/images/BIJOUX-CHEVILLE.png' %}" alt="Bijoux Cheville"></a>
+    </div>
+    <div class="category-item">
+        <a href="{% url 'liste_bouclesoreilles' %}"><img src="{% static 'assets/images/BOUCLESOREILLES.png' %}" alt="Boucles d'oreilles"></a>
+    </div>
+    <div class="category-item">
+        <a href="{% url 'liste_bracelets' %}"><img src="{% static 'assets/images/BRACELETS.png' %}" alt="Bracelets"></a>
+    </div>
+    <div class="category-item"></div>
+        <a href="{% url 'liste_cartesdiv' %}"><img src="{% static 'assets/images/CARTESDIV.png' %}" alt="Cartes divinatoires"></a>
+    </div>
+    <div class="category-item">
+        <a href="{% url 'liste_colliers' %}"><img src="{% static 'assets/images/COLLIERS.png' %}" alt="Colliers"></a>
+    </div>
+    <div class="category-item">
+        <a href="{% url 'liste_chapelets' %}"><img src="{% static 'assets/images/CHAPELETS.png' %}" alt="Chapelets"></a>
+    </div>
+    <div class="category-item">
+        <a href="{% url 'liste_malas' %}"><img src="{% static 'assets/images/MALAS.png' %}" alt="Les malas"></a>
+    </div>
+
+    <div class="category-item"></div>
+        <a href="{% url 'liste_parures' %}"><img src="{% static 'assets/images/PARURES.png' %}" alt="Parures"></a>
+    </div>
+    <div class="category-item">
+        <a href="{% url 'liste_pendules' %}"><img src="{% static 'assets/images/PENDULES.png' %}" alt="Pendules Divinatoires"></a>
+    </div>
+    <div class="category-item">
+        <a href="{% url 'liste_portecles' %}"><img src="{% static 'assets/images/PORTE-CLES.png' %}" alt="Porte-Clés"></a>
+    </div>
+</section>
+{% endblock %}

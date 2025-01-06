@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Arc En Ciel - Chapelets{% endblock %}
+
+{% block content %}
+<!-- Bannière animée -->
+<div class="banner">
+    <img src="{% static 'assets/images/banner-chapelets.png' %}" alt="bannière photo chapelets">
+    <div class="banner-text">
+        <p>Découvrez notre collection de chapelets en pierres naturelles, minutieusement façonnés pour vous offrir un accessoire</p>
+        <p>à la fois raffiné et empreint de sérénité.</p>
+    </div>
+</div>
+
+<!-- Affichage des chapelets -->
+<section class="produits">
+    <img src="{% static 'assets/images/titres-chapelets.png' %}" alt="logo titre bagues">
+    <div class="produits-list">
+        {% for item in produit %}
+        <div class="produit-item">
+            <h2>{{ item.nom }}</h2>
+            <p>{{ item.description }}</p>
+            <p>Prix : {{ item.prix }} €</p>
+            <img src="{{ item.image.url }}" alt="{{ item.nom }}">
+        </div>
+        {% empty %}
+        <p>Aucun chapelet disponible pour le moment.</p>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

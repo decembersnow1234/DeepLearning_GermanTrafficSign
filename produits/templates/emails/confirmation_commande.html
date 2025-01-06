@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Confirmation de commande</title>
+</head>
+<body>
+    <h1>Merci pour votre commande !</h1>
+    <p>Votre commande n°{{ commande.id }} a bien été enregistrée.</p>
+    <p>Détails de la commande :</p>
+    <ul>
+        {% for produit in commande.produits.all %}
+            <li>{{ produit.nom }} x {{ produit.quantite }} : {{ produit.prix }} €</li>
+        {% endfor %}
+    </ul>
+    <p>Total : {{ commande.total }} €</p>
+</body>
+</html>

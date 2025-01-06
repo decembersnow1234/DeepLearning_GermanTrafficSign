@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Arc En Ciel - À Propos{% endblock %}
+
+{% block content %}
+<!-- Bannière animée -->
+<div class="banner">
+    <img src="{% static 'assets/images/Capture.png' %}" alt="bannière photo À Propos">
+    <div class="banner-text">
+        <p>En savoir plus sur Arc En Ciel, notre histoire, nos valeurs, et notre engagement.</p>
+    </div>
+</div>
+
+<!-- Contenu de la page À Propos -->
+<section class="apropos">
+    <h1>Qui sommes-nous ?</h1>
+    <p>"Je m'appelle Nadège, médium et passionnée de cartomancie. 
+        Depuis toujours, l’univers me guide vers le bien-être des autres, 
+        et c'est avec une profonde empathie que je crée des bijoux en pierres naturelles. 
+        Chaque création est pensée pour apporter bien-être et protection à ceux qui la portent, peu importe leur âge ou leur genre. 
+        Mes bijoux sont entièrement personnalisables, afin que chacun puisse trouver la pièce qui résonne le plus avec ses énergies et ses besoins. 
+        C’est pour moi une façon de partager ma passion pour la création et d’aider mon prochain à se sentir protégé et en harmonie.</p>
+
+    <!-- À compléter avec des informations supplémentaires de la créatrice -->
+    <p>[Informations supplémentaires à ajouter]</p>
+</section>
+{% endblock %}

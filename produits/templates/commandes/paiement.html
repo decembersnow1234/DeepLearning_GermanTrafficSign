@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="paiement-page">
+    <h1>Paiement</h1>
+
+    <div class="paiement-container">
+        <!-- Informations d'expédition -->
+        <div class="infos-expedition">
+            <div class="info-block">
+                <h3>Contact</h3>
+                <p>Nom de l'utilisateur - Email de l'utilisateur</p>
+                <a href="#">Modifier</a>
+            </div>
+
+            <div class="info-block">
+                <h3>Expédier à</h3>
+                <p>Adresse de l'utilisateur</p>
+                <a href="#">Modifier</a>
+            </div>
+
+            <div class="info-block">
+                <h3>Méthode</h3>
+                <p>Livraison standard - 
+                {% if frais_livraison == 0 %}Gratuite{% else %}{{ frais_livraison }} €{% endif %}
+                </p>
+                <a href="#">Modifier</a>
+            </div>
+        </div>
+
+        <!-- Résumé de la commande -->
+        <div class="resume-commande">
+            <h3>Votre commande</h3>
+            <div class="order-details">
+                {% for produit in produits %}
+    <div class="product-summary">
+        {% if produit.images.first %}
+            <img src="{{ produit.images.first.image.url }}" alt="{{ produit.nom }}" class="image-produit-miniature">
+        {% else %}
+            <img src="{% static 'assets/images/default-image.jpg' %}" alt="{{ produit.nom }}">
+        {% endif %}
+        <div class="product-info">
+            <p>{{ produit.nom }}</p>
+            <p>{{ produit.quantite }} x {{ produit.prix }} €</p>
+              </div>
+           </div>
+       {% endfor %}
+            </div>
+
+            <!-- Sous-total, livraison, et total -->
+            <div class="pricing-summary">
+                <p>Sous-total : <span>{{ sous_total }} €</span></p>
+                <p>Livraison : <span>
+                {% if frais_livraison == 0 %}Gratuite{% else %}{{ frais_livraison }} €{% endif %}
+                </span></p>
+                <p>Total : <span>{{ total }} €</span></p>
+            </div>
+
+            <!-- Code promo section -->
+            <div class="promo-section">
+                <input type="text" placeholder="Carte-cadeau ou code promo">
+                <button class="btn btn-secondary">Appliquer</button>
+            </div>
+
+            <!-- Bouton pour payer -->
+            <div class="payment-button">
+                <button class="btn btn-primary">Payer {{ total }} € </button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

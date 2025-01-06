@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Votre panier</h1>
+
+{% if produits %}
+    <table class="panier-table">
+        <thead>
+            <tr>
+                <th>Produit</th>
+                <th>Prix</th>
+                <th>Quantité</th>
+                <th>Total</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for produit in produits %}
+            <tr>
+                <td>{{ produit.nom }}</td>
+                <td>{{ produit.prix }} €</td>
+
+                <!-- Formulaire pour la mise à jour de la quantité -->
+                <td>
+                    <form method="post" action="{% url 'mettre_a_jour_panier' produit.id %}">
+                        {% csrf_token %}
+                        <input type="number" name="quantite" value="{{ produit.quantite }}" min="1">
+                        <button type="submit" class="btn-update">Mettre à jour</button>
+                    </form>
+                </td>
+
+                <td>{{ produit.sous_total }} €</td>  <!-- Total calculé dans la vue -->
+
+                <td>
+                    <a href="{% url 'retirer_du_panier' produit.id %}" class="btn-delete" onclick="return confirm('Retirer ce produit du panier ?')">Retirer</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Affichage du total global du panier -->
+    <div class="total-container">
+        <h3>Total du panier : {{ total_panier }} €</h3>
+    </div>
+
+    <!-- Bouton pour passer au paiement -->
+    <div class="checkout-btn-container">
+        <a href="{% url 'passer_au_paiement' %}" class="btn btn-primary">Passer au paiement</a>
+    </div>
+
+{% else %}
+    <p>Votre panier est vide.</p>
+{% endif %}
+{% endblock %}

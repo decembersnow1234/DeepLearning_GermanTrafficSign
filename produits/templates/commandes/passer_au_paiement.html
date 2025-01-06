@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="checkout-container">
+    <div class="checkout-left">
+        <h2>Paiement</h2>
+        
+        <!-- Informations de contact et de livraison -->
+        <div class="checkout-info">
+            <div class="checkout-info-section">
+                <p><strong>Contact:</strong> {{ user.email }} <a href="#">Modifier</a></p>
+            </div>
+            <div class="checkout-info-section">
+                <p><strong>Expédier à:</strong> {{ user.adresse }} <a href="#">Modifier</a></p>
+            </div>
+            <div class="checkout-info-section">
+                <p><strong>Méthode:</strong> Lettre Suivie - 3.90 € <a href="#">Modifier</a></p>
+            </div>
+        </div>
+        
+        <!-- Méthode de paiement -->
+        <div class="payment-method">
+            <h3>Paiement</h3>
+            <p>Toutes les transactions sont sécurisées et chiffrées.</p>
+            <div class="payment-option">
+                <img src="{% static 'assets/images/summup-logo.png' %}" alt="SumUp Logo">
+                <p>Après avoir cliqué sur "Valider le paiement", vous serez redirigé(e) vers SumUp pour finaliser votre achat de façon sécurisée.</p>
+            </div>
+        </div>
+        
+        <!-- Bouton pour valider le paiement -->
+        <button type="submit" class="btn-payer">Valider le paiement</button>
+    </div>
+    
+    <!-- Récapitulatif de commande -->
+    <div class="checkout-right">
+        <h3>Votre commande</h3>
+        <div class="product-summary">
+            <img src="{{ produit.image.url }}" alt="{{ produit.nom }}">
+            <div class="product-info">
+                <p>{{ produit.nom }}</p>
+                <p>{{ produit.prix }} €</p>
+            </div>
+        </div>
+
+        <div class="checkout-total">
+            <p><strong>Sous-total:</strong> {{ sous_total }} €</p>
+            <p><strong>Livraison:</strong> 3.90 €</p>
+            <p><strong>Total:</strong> {{ total }} €</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
